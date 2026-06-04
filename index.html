@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高手維修 iPhone 維修價目表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --blue: #1a3a6b;
+    --accent: #2563eb;
+    --accent2: #f59e0b;
+    --light: #e8edf5;
+    --white: #ffffff;
+    --row-odd: #f0f4fb;
+    --row-even: #ffffff;
+    --highlight: #fef3c7;
+    --text: #1e2a45;
+    --muted: #6b7a99;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: #0b1526;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f1f3d 0%, #1a3a6b 60%, #0f2a5a 100%);
+    padding: 48px 24px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.25) 0%, transparent 70%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,158,11,0.18);
+    border: 1px solid rgba(245,158,11,0.5);
+    color: var(--accent2);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Oswald', 'Noto Sans TC', sans-serif;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.15;
+    position: relative;
+  }
+  .hero h1 span { color: var(--accent2); }
+  .hero-sub {
+    margin-top: 10px;
+    color: rgba(255,255,255,0.55);
+    font-size: 13px;
+    letter-spacing: 2px;
+    position: relative;
+  }
+  .hero-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    margin: 18px auto 0;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  /* ── TABS ── */
+  .tabs-wrap {
+    background: #0b1526;
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid rgba(37,99,235,0.2);
+  }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.55);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+  }
+  .tab-btn:hover {
+    background: rgba(37,99,235,0.2);
+    border-color: rgba(37,99,235,0.5);
+    color: #fff;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--accent), #1d4ed8);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 16px 60px;
+  }
+
+  .panel { display: none; animation: fadeIn 0.3s ease; }
+  .panel.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SERIES BLOCK ── */
+  .series-block { margin-bottom: 36px; }
+  .series-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 12px 12px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .series-title svg {
+    width: 22px; height: 22px;
+    fill: none; stroke: var(--accent2);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+  }
+  thead tr {
+    background: linear-gradient(135deg, #1a3a6b, #1e4a8a);
+  }
+  thead th {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 12px 14px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  thead th:first-child { text-align: left; }
+
+  tbody tr:nth-child(odd)  { background: var(--row-odd); }
+  tbody tr:nth-child(even) { background: var(--row-even); }
+  tbody tr:hover { background: #dce8fc; transition: background 0.15s; }
+  tbody tr.highlight { background: var(--highlight) !important; }
+  tbody tr.highlight:hover { background: #fde68a !important; }
+
+  td {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    border-bottom: 1px solid #e2e8f4;
+  }
+  td:first-child {
+    font-weight: 500;
+    min-width: 130px;
+  }
+  td:not(:first-child) {
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--blue);
+  }
+  td.dash { color: var(--muted); font-weight: 400; }
+
+  .row-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 7px;
+    flex-shrink: 0;
+  }
+  .highlight .row-num { background: var(--accent2); color: var(--navy); }
+  .star-label {
+    color: var(--accent2);
+    font-weight: 700;
+  }
+  .price-highlight {
+    color: #1d4ed8 !important;
+    font-weight: 800 !important;
+  }
+  .highlight td:not(:first-child) { color: #b45309 !important; font-weight: 800; }
+
+  /* ── NOTE ── */
+  .note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #1a3a6b, #0f2a5a);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    margin-top: 6px;
+  }
+  .note svg { width:16px;height:16px;fill:var(--accent2);flex-shrink:0; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.25);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: var(--accent2); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">高手維修 · IG @applemaster.2012</div>
+  <h1>iPhone <span>維修</span>價目表</h1>
+  <p class="hero-sub">實際價格依現場檢測報價為主</p>
+  <div class="hero-line"></div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab-btn active" data-panel="p16e">16E / SE 系列</button>
+    <button class="tab-btn" data-panel="p16">15 / 16 系列</button>
+    <button class="tab-btn" data-panel="p1413">14 / 13 系列</button>
+    <button class="tab-btn" data-panel="p1211">12 / 11 系列</button>
+    <button class="tab-btn" data-panel="px87">X / 8 / 7 系列</button>
+    <button class="tab-btn" data-panel="p65">6 / 5 系列</button>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════ 16E / SE ═══════════════════════════════ -->
+<div class="panel active" id="p16e">
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 16E / SE 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>維修項目</th>
+            <th>16E</th><th>SE3</th><th>SE2</th><th>SE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶總成</td><td>6500</td><td>3000</td><td>3000</td><td>1200</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶總成</td><td>5500</td><td>2000</td><td>2000</td><td class="dash">-</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">4</span>開機排線</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">5</span>音量排線</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>4300</td><td>2000</td><td>1800</td><td>700</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>4200</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">9</span>BSMI認證電池</td><td>1790</td><td>1000</td><td>900</td><td>800</td></tr>
+          <tr><td><span class="row-num">10</span>原廠電池</td><td>3650</td><td>2850</td><td>2850</td><td class="dash">-</td></tr>
+          <tr><td><span class="row-num">11</span>揚聲器</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">12</span>振動器</td><td>3500</td><td>1000</td><td>1000</td><td>700</td></tr>
+          <tr><td><span class="row-num">13</span>無線充電</td><td>3500</td><td>1000</td><td>1000</td><td class="dash">-</td></tr>
+          <tr><td><span class="row-num">14</span>HOME鍵</td><td class="dash">-</td><td>1300</td><td>1200</td><td>800</td></tr>
+          <tr><td><span class="row-num">15</span>彩色背蓋中框</td><td>7000</td><td>2000</td><td>2000</td><td>1200</td></tr>
+          <tr><td><span class="row-num">16</span>鏡頭蓋</td><td>1300</td><td>600</td><td>600</td><td>600</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 15 / 16 ═══════════════════════════════ -->
+<div class="panel" id="p16">
+  <!-- iPhone 16 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 16 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>16Pro Max</th><th>16Pro</th><th>16Plus</th><th>16</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>9900</td><td>8900</td><td>7000</td><td>6500</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>8900</td><td>7900</td><td>6000</td><td>5500</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">4</span>音量＋開機＋無線充電</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">5</span>閃光＋前收音</td><td>4300</td><td>4300</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>4300</td><td>4300</td><td>4300</td><td>4300</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>4200</td><td>4200</td><td>4200</td><td>4200</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">9</span>BSMI認證電池</td><td>1790</td><td>1790</td><td>1790</td><td>1790</td></tr>
+          <tr><td><span class="row-num">10</span>原廠電池</td><td>3650</td><td>3650</td><td>3650</td><td>3650</td></tr>
+          <tr><td><span class="row-num">11</span>揚聲器</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">12</span>振動器</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">13</span>彩色背蓋中框</td><td>8000</td><td>8000</td><td>7000</td><td>7000</td></tr>
+          <tr><td><span class="row-num">14</span>鏡頭玻璃</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+          <tr><td><span class="row-num">15</span>接零件拉資料</td><td>2500</td><td>2500</td><td>2500</td><td>2500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- iPhone 15 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 15 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>15Pro Max</th><th>15Pro</th><th>15Plus</th><th>15</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>9000</td><td>8500</td><td>6000</td><td>6000</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>8000</td><td>6500</td><td>5000</td><td>5000</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">4</span>音量＋開機＋無線充電</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">5</span>閃光＋前收音</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>4700</td><td>4700</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>3700</td><td>3700</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">9</span>BSMI認證電池</td><td>1790</td><td>1790</td><td>1790</td><td>1790</td></tr>
+          <tr class="highlight"><td><span class="row-num">10</span><span class="star-label">★ 診斷電池｜首選款</span></td><td>2290</td><td>2290</td><td>2290</td><td>2290</td></tr>
+          <tr><td><span class="row-num">11</span>原廠電池</td><td>2850</td><td>2850</td><td>2850</td><td>2850</td></tr>
+          <tr><td><span class="row-num">12</span>揚聲器</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">13</span>振動器</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">14</span>彩色背蓋中框</td><td>6000</td><td>6000</td><td>6000</td><td>6000</td></tr>
+          <tr><td><span class="row-num">15</span>鏡頭玻璃</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+          <tr><td><span class="row-num">16</span>接零件拉資料</td><td>2500</td><td>2500</td><td>2500</td><td>2500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 14 / 13 ═══════════════════════════════ -->
+<div class="panel" id="p1413">
+  <!-- 14 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 14 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>14Pro Max</th><th>14Pro</th><th>14Plus</th><th>14</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>8500</td><td>7500</td><td>5800</td><td>5500</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>6500</td><td>5500</td><td>4500</td><td>4500</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>3400</td><td>3400</td><td>2700</td><td>2700</td></tr>
+          <tr><td><span class="row-num">4</span>音量＋開機＋無線充電</td><td>3500</td><td>3500</td><td>2700</td><td>2700</td></tr>
+          <tr><td><span class="row-num">5</span>閃光＋前收音</td><td>3700</td><td>3700</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>4700</td><td>4700</td><td>3700</td><td>3700</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>4700</td><td>4700</td><td>2700</td><td>2700</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>3700</td><td>3700</td><td>3700</td><td>3700</td></tr>
+          <tr><td><span class="row-num">9</span>BSMI認證電池</td><td>1590</td><td>1590</td><td>1590</td><td>1590</td></tr>
+          <tr class="highlight"><td><span class="row-num">10</span><span class="star-label">★ 診斷電池｜首選款</span></td><td>2190</td><td>2190</td><td>2190</td><td>2190</td></tr>
+          <tr><td><span class="row-num">11</span>原廠電池</td><td>2850</td><td>2850</td><td>2850</td><td>2850</td></tr>
+          <tr><td><span class="row-num">12</span>揚聲器</td><td>3400</td><td>3400</td><td>2700</td><td>2700</td></tr>
+          <tr><td><span class="row-num">13</span>振動器</td><td>3400</td><td>3400</td><td>2700</td><td>2700</td></tr>
+          <tr><td><span class="row-num">14</span>彩色背蓋中框</td><td>5000</td><td>5000</td><td>5000</td><td>5000</td></tr>
+          <tr><td><span class="row-num">15</span>鏡頭玻璃</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+          <tr><td><span class="row-num">16</span>接零件拉資料</td><td>1800</td><td>1800</td><td>1800</td><td>1800</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 13 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 13 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>13Pro Max</th><th>13Pro</th><th>13</th><th>13Mini</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>6300</td><td>5900</td><td>4500</td><td>4800</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>4500</td><td>4500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>2500</td><td>2500</td><td>2500</td><td>2500</td></tr>
+          <tr><td><span class="row-num">4</span>音量＋開機＋無線充電</td><td>3000</td><td>3000</td><td>2800</td><td>2800</td></tr>
+          <tr><td><span class="row-num">5</span>閃光＋前收音</td><td>3000</td><td>3000</td><td>2800</td><td>2800</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>3800</td><td>3800</td><td>2500</td><td>2500</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>3300</td><td>3300</td><td>3300</td><td>3300</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>2500</td><td>2500</td><td>2500</td><td>2500</td></tr>
+          <tr><td><span class="row-num">9</span>BSMI認證電池</td><td>1590</td><td>1590</td><td>1590</td><td>1590</td></tr>
+          <tr class="highlight"><td><span class="row-num">10</span><span class="star-label">★ 診斷電池｜首選款</span></td><td>2190</td><td>2190</td><td>2190</td><td>2190</td></tr>
+          <tr><td><span class="row-num">11</span>原廠電池</td><td>2850</td><td>2850</td><td>2850</td><td>2850</td></tr>
+          <tr><td><span class="row-num">12</span>揚聲器</td><td>3000</td><td>3000</td><td>2800</td><td>2800</td></tr>
+          <tr><td><span class="row-num">13</span>振動器</td><td>3000</td><td>3000</td><td>2800</td><td>2800</td></tr>
+          <tr><td><span class="row-num">14</span>彩色背蓋中框</td><td>3800</td><td>3800</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">15</span>鏡頭玻璃</td><td>1300</td><td>1300</td><td>1300</td><td>1300</td></tr>
+          <tr><td><span class="row-num">16</span>接零件拉資料</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 12 / 11 ═══════════════════════════════ -->
+<div class="panel" id="p1211">
+  <!-- 12 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 12 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>12Pro Max</th><th>12Pro</th><th>12</th><th>12Mini</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>4800</td><td>4500</td><td>4500</td><td>4800</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>3500</td><td>3500</td><td>3500</td><td>3500</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>2500</td><td>2500</td><td>2500</td><td>2200</td></tr>
+          <tr><td><span class="row-num">4</span>音量＋開機＋無線充電</td><td>2500</td><td>2500</td><td>2500</td><td>2200</td></tr>
+          <tr><td><span class="row-num">5</span>閃光＋前收音</td><td>2500</td><td>2500</td><td>2500</td><td>2200</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>3500</td><td>3300</td><td>2500</td><td>2500</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">9</span>聽筒＋臉部辨識移植</td><td>4000</td><td>4000</td><td>4000</td><td>4000</td></tr>
+          <tr><td><span class="row-num">10</span>BSMI認證電池</td><td>1290</td><td>1290</td><td>1290</td><td>1290</td></tr>
+          <tr class="highlight"><td><span class="row-num">11</span><span class="star-label">★ 診斷電池｜首選款</span></td><td>1790</td><td>1790</td><td>1790</td><td>1790</td></tr>
+          <tr><td><span class="row-num">12</span>原廠電池</td><td>2850</td><td>2850</td><td>2850</td><td>2850</td></tr>
+          <tr><td><span class="row-num">13</span>揚聲器</td><td>2500</td><td>2500</td><td>2500</td><td>2200</td></tr>
+          <tr><td><span class="row-num">14</span>振動器</td><td>2500</td><td>2500</td><td>2500</td><td>2200</td></tr>
+          <tr><td><span class="row-num">15</span>彩色背蓋中框</td><td>4500</td><td>4000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">16</span>鏡頭玻璃</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">17</span>接零件拉資料</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 11 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 11 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>11Pro Max</th><th>11Pro</th><th>11</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>4400</td><td>4400</td><td>4400</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>3400</td><td>3400</td><td>3400</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">4</span>開機＋閃光排線</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">5</span>音量排線</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>2000</td><td>2000</td><td>1800</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>2300</td><td>2300</td><td>2300</td></tr>
+          <tr><td><span class="row-num">9</span>聽筒＋臉部辨識移植</td><td>3300</td><td>3300</td><td>3300</td></tr>
+          <tr><td><span class="row-num">10</span>BSMI認證電池</td><td>1290</td><td>1290</td><td>1290</td></tr>
+          <tr><td><span class="row-num">11</span>原廠電池</td><td>2850</td><td>2850</td><td>2850</td></tr>
+          <tr><td><span class="row-num">12</span>揚聲器</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">13</span>振動器</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">14</span>無線充電</td><td>1600</td><td>1600</td><td>1600</td></tr>
+          <tr><td><span class="row-num">15</span>彩色背蓋中框</td><td>2900</td><td>2900</td><td>2500</td></tr>
+          <tr><td><span class="row-num">16</span>鏡頭玻璃</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">17</span>接零件拉資料</td><td>1000</td><td>1000</td><td>1000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ X / 8 / 7 ═══════════════════════════════ -->
+<div class="panel" id="px87">
+  <!-- X series -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone X / XS / XR 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>XS MAX</th><th>XR</th><th>XS</th><th>X</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>3900</td><td>3900</td><td>3900</td><td>3900</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>2900</td><td>2900</td><td>2900</td><td>2900</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">4</span>開機＋閃光排線</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">5</span>音量排線</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">6</span>後相機</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td></tr>
+          <tr><td><span class="row-num">7</span>前相機＋感光</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td></tr>
+          <tr><td><span class="row-num">8</span>聽筒</td><td>2000</td><td>2000</td><td>2000</td><td>2000</td></tr>
+          <tr><td><span class="row-num">9</span>聽筒＋臉部辨識移植</td><td>3000</td><td>3000</td><td>3000</td><td>3000</td></tr>
+          <tr><td><span class="row-num">10</span>BSMI認證電池</td><td>1190</td><td>1190</td><td>1190</td><td>1190</td></tr>
+          <tr><td><span class="row-num">11</span>揚聲器</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">12</span>振動器</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">13</span>無線充電</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">14</span>彩色背蓋中框</td><td>2400</td><td>2300</td><td>2400</td><td>2300</td></tr>
+          <tr><td><span class="row-num">15</span>鏡頭玻璃</td><td>800</td><td>800</td><td>1300</td><td>1000</td></tr>
+          <tr><td><span class="row-num">16</span>接零件拉資料</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 8/7 -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 8 / 7 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>8Plus</th><th>8</th><th>7Plus</th><th>7</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>2800</td><td>2600</td><td>2600</td><td>2400</td></tr>
+          <tr><td><span class="row-num">2</span>陸製液晶</td><td>2400</td><td>2200</td><td>2200</td><td>2000</td></tr>
+          <tr><td><span class="row-num">3</span>尾插音頻總成</td><td>1500</td><td>1500</td><td>1500</td><td>1500</td></tr>
+          <tr><td><span class="row-num">4</span>開機＋音量排線</td><td>1200</td><td>1200</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">5</span>後相機</td><td>2500</td><td>2000</td><td>2000</td><td>1200</td></tr>
+          <tr><td><span class="row-num">6</span>前相機＋感光</td><td>1200</td><td>1200</td><td>1000</td><td>900</td></tr>
+          <tr><td><span class="row-num">7</span>聽筒</td><td>1200</td><td>1200</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">8</span>BSMI認證電池</td><td>1000</td><td>900</td><td>900</td><td>800</td></tr>
+          <tr><td><span class="row-num">9</span>揚聲器</td><td>1200</td><td>1200</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">10</span>振動器</td><td>1200</td><td>1200</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">11</span>HOME鍵</td><td>1200</td><td>1200</td><td>1000</td><td>1000</td></tr>
+          <tr><td><span class="row-num">12</span>彩色背蓋中框</td><td>2500</td><td>2500</td><td>2500</td><td>2500</td></tr>
+          <tr><td><span class="row-num">13</span>鏡頭玻璃</td><td>600</td><td>600</td><td>600</td><td>600</td></tr>
+          <tr><td><span class="row-num">14</span>接零件拉資料</td><td>1000</td><td>1000</td><td>1000</td><td>1000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ 6 / 5 ═══════════════════════════════ -->
+<div class="panel" id="p65">
+  <!-- 6/6S -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 6 / 6S 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>6S Plus</th><th>6S</th><th>6Plus</th><th>6</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶</td><td>2000</td><td>1500</td><td>2000</td><td>1500</td></tr>
+          <tr><td><span class="row-num">2</span>尾插音頻總成</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">3</span>開機排線</td><td>800</td><td>800</td><td>800（含閃光排線）</td><td>800（含閃光排線）</td></tr>
+          <tr><td><span class="row-num">4</span>音量排線</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">5</span>後相機</td><td>1000</td><td>1000</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">6</span>前相機＋感光</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">7</span>聽筒</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">8</span>BSMI認證電池</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">9</span>WIFI模組</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">10</span>藍芽模組</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">11</span>揚聲器</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">12</span>振動器</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">13</span>HOME鍵</td><td>800</td><td>800</td><td>800</td><td>800</td></tr>
+          <tr><td><span class="row-num">14</span>彩色背蓋中框</td><td>1200</td><td>1200</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">15</span>鏡頭玻璃</td><td>500</td><td>500</td><td>500</td><td>500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 5 series -->
+  <div class="series-block">
+    <div class="series-title">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+      iPhone 5 系列
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>維修項目</th><th>5S</th><th>5C</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="row-num">1</span>台製液晶總成</td><td>1400</td><td>1400</td></tr>
+          <tr><td><span class="row-num">2</span>尾插音頻總成</td><td>690</td><td>690</td></tr>
+          <tr><td><span class="row-num">3</span>開機＋音量排線</td><td>690</td><td>690</td></tr>
+          <tr><td><span class="row-num">4</span>後相機</td><td>690</td><td>690</td></tr>
+          <tr><td><span class="row-num">5</span>前相機＋感光</td><td>690</td><td>690</td></tr>
+          <tr><td><span class="row-num">6</span>聽筒</td><td>590</td><td>590</td></tr>
+          <tr><td><span class="row-num">7</span>BSMI認證電池</td><td>600</td><td>600</td></tr>
+          <tr><td><span class="row-num">8</span>WIFI排線＋基座</td><td>590</td><td>590</td></tr>
+          <tr><td><span class="row-num">9</span>揚聲器</td><td>590</td><td>590</td></tr>
+          <tr><td><span class="row-num">10</span>振動器</td><td>590</td><td>590</td></tr>
+          <tr><td><span class="row-num">11</span>HOME鍵</td><td>590</td><td>590</td></tr>
+          <tr><td><span class="row-num">12</span>彩色背蓋中框</td><td>1200</td><td>1200</td></tr>
+          <tr><td><span class="row-num">13</span>鏡頭玻璃</td><td>500</td><td>500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11H9v2h2V7zm0 4H9v4h2v-4z"/></svg>
+      實際價格依現場檢測報價為主
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<footer>
+  © 高手維修 &nbsp;·&nbsp; <a href="https://www.instagram.com/applemaster.2012" target="_blank">IG @applemaster.2012</a>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.panel');
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.panel).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
